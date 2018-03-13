@@ -30,5 +30,9 @@ public class MainActivity extends AppCompatActivity {
         //    * List object created in step 2
         // 4. Find the ListView layout element "my_listview" and create an object instance
         // 5. Connect the ArrayAdapter from step 3 with ListView object created in step 4
+        // 6. Style the ListView items according to Material Design
+        //    See: https://material.io/guidelines/components/lists.html#lists-specs
+        //    Look for "singel line specs" for "text only" lists and modify the list_item_textview
+        //    accordingly
     }
 }

@@ -2,8 +2,11 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,13 +14,15 @@ public class MainActivity extends AppCompatActivity {
     private String[] mountainLocations = {"Alps","Alps","Alaska"};
     private int[] mountainHeights ={4478,4808,6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
-    private ArrayList //här
+    private ArrayList<String> listData=new ArrayList<>(Arrays.asList(mountainNames));//här
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.my_item,R.id.my_item,listData);//Här
+        ListView my_listview=(ListView) findViewById(R.id.my_item);
+        my_listview.setAdapter(adapter);
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
         // will hold/show your data created here. You need three create things:

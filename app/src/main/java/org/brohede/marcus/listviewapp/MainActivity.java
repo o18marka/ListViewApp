@@ -2,8 +2,11 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +24,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.my_item,R.id.my_item,listData);//Här
-        ListView my_listview=(ListView) findViewById(R.id.my_item);
-        my_listview.setAdapter(adapter);
+        ListView my_listview=(ListView) findViewById(R.id.my_item);//här
+        my_listview.setAdapter(adapter);//här
+
+        //String test = new String("Toast Test!");
+        //Toast.makeText(getApplicationContext(), test, Toast.LENGTH_LONG).show();
+
+        my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() { //Min Toast
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String test = new String("Grattis, du klickade på ett listelement!");
+                Toast.makeText(getApplicationContext(), test, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
         // The onCreate method is run when the app is created.
         // Before you can implement this you need to create the layout xml files that
         // will hold/show your data created here. You need three create things:

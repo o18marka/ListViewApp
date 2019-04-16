@@ -20,7 +20,7 @@ public class mountain {
 
     public String info(){
         String tmp=new String();
-        tmp+=name+" ligger i "+location+" och har en höjd på "+height+".";
+        tmp+=name+" ligger i "+location+" och har en höjd på "+height+"m.";
         return tmp;
     }
 

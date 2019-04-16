@@ -18,14 +18,24 @@ public class MainActivity extends AppCompatActivity {
     private int[] mountainHeights ={4478,4808,6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView.
     private ArrayList<String> listData=new ArrayList<>(Arrays.asList(mountainNames));//här
+    private ArrayList<mountain> mountainArrayList=new ArrayList<>(); //här
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ArrayAdapter<String>adapter=new ArrayAdapter<String>(this,R.layout.my_item,R.id.my_item,listData);//Här
         ListView my_listview=(ListView) findViewById(R.id.my_item);//här
         my_listview.setAdapter(adapter);//här
+
+
+        mountainArrayList.add(new mountain("Matterhorn","Alps",4478)); //här
+        mountainArrayList.add(new mountain("Mont Blanc","Alps",4808)); //här
+        mountainArrayList.add(new mountain("Denali","Alaska",6190)); //här
+
+        ArrayAdapter<mountain> adapter2=new ArrayAdapter<mountain>(this,R.layout.my_item,R.id.my_item,mountainArrayList); //här
 
         //String test = new String("Toast Test!");
         //Toast.makeText(getApplicationContext(), test, Toast.LENGTH_LONG).show();
@@ -33,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         my_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() { //Min Toast
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String test = new String("Grattis, du klickade på ett listelement!");
-                Toast.makeText(getApplicationContext(), test, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), mountainArrayList.get(position).info(),Toast.LENGTH_SHORT).show();
             }
         });
 
